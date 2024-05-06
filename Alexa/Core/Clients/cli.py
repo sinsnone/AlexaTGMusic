@@ -24,6 +24,7 @@ if not STRING1:
     ASS_CLI_1 = None
 else:
     ASS_CLI_1 = Client(
+        'ASS_CLI_1',
         api_id=API_ID,
         api_hash=API_HASH,
         session_string=STRING1,

@@ -47,7 +47,6 @@ flood = {}
     filters.private
     & filters.incoming
     & ~filters.service
-    & ~filters.edited
     & ~filters.me
     & ~filters.bot
     & ~filters.via_bot

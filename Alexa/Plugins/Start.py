@@ -144,7 +144,7 @@ async def useradd(_, message: Message):
 # Copyright (C) 2021 By @HarshitSharma361
 
 
-@app.on_message(filters.command("start") & filters.private & ~filters.edited)
+@app.on_message(filters.command("start") & filters.private)
 async def useradd(_, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/4c7025b0b94c0d2b5f94a.jpg",
@@ -180,7 +180,6 @@ async def useradd(_, message: Message):
     filters.command(["alive", "reload", "alexa"])
     & filters.private
     & ~filters.group
-    & ~filters.edited
 )
 async def useradd(_, message: Message):
     await message.reply_photo(
@@ -203,7 +202,6 @@ async def useradd(_, message: Message):
     filters.command(["repo", "source"])
     & filters.private
     & ~filters.group
-    & ~filters.edited
 )
 async def useradd(_, message: Message):
     await message.reply_photo(

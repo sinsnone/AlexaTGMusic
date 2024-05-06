@@ -31,7 +31,7 @@ def AdminRightsCheck(mystic):
         is_non_admin = await is_nonadmin_chat(message.chat.id)
         if not is_non_admin:
             member = await app.get_chat_member(message.chat.id, message.from_user.id)
-            if not member.can_manage_voice_chats:
+            if not member.status.value in ("administrator", "owner"):
                 if message.from_user.id not in SUDOERS:
                     token = await int_to_alpha(message.from_user.id)
                     _check = await get_authuser_names(message.chat.id)
@@ -51,7 +51,7 @@ def AdminActual(mystic):
                 "ʏᴏᴜ'ʀᴇ ᴀɴ __ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ__\nʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ..."
             )
         member = await app.get_chat_member(message.chat.id, message.from_user.id)
-        if not member.can_manage_voice_chats:
+        if not member.status.value in ("administrator", "owner"):
             return await message.reply(
                 "ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴘᴇʀғᴏʀᴍ ᴛʜɪs ᴀᴄᴛɪᴏɴ...\n\n__REQUIRES ADMIN WITH MANAGE VC RIGHTS__"
             )
@@ -67,7 +67,7 @@ def AdminRightsCheckCB(mystic):
             a = await app.get_chat_member(
                 CallbackQuery.message.chat.id, CallbackQuery.from_user.id
             )
-            if not a.can_manage_voice_chats:
+            if not a.status.value in ("administrator", "owner"):
                 if CallbackQuery.from_user.id not in SUDOERS:
                     token = await int_to_alpha(CallbackQuery.from_user.id)
                     _check = await get_authuser_names(CallbackQuery.from_user.id)
@@ -86,7 +86,7 @@ def ActualAdminCB(mystic):
         a = await app.get_chat_member(
             CallbackQuery.message.chat.id, CallbackQuery.from_user.id
         )
-        if not a.can_manage_voice_chats:
+        if not a.status.value in ("administrator", "owner"):
             return await CallbackQuery.answer(
                 "ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀᴇǫᴜɪʀᴇᴅ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴘᴇʀғᴏʀᴍ ᴛʜɪs ᴀᴄᴛɪᴏɴ...\n\nPermission: MANAGE VOICE CHATS",
                 show_alert=True,

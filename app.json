@@ -6,7 +6,6 @@
   "python3",
   "telegram"
   ],
-  "stack": "container",
   "env": {
     "API_ID": {
       "description": "Get this value from https://my.telegram.org",

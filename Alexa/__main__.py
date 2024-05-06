@@ -124,7 +124,7 @@ async def initiate_bot():
         console.print(f"\n[red]sᴛᴏᴘᴘɪɴɢ ʙᴏᴛ")
         return
     a = await app.get_chat_member(LOG_GROUP_ID, BOT_ID)
-    if a.status != "administrator":
+    if a.status.value != "administrator":
         print("ᴘʀᴏᴍᴏᴛᴇ ʙᴏᴛ ᴀs ᴀᴅᴍɪɴ ɪɴ ʟᴏɢɢᴇʀ ᴄʜᴀɴɴᴇʟ")
         console.print(f"\n[red]sᴛᴏᴘᴘɪɴɢ ʙᴏᴛ")
         return

@@ -83,4 +83,4 @@ else:
 if not LOG_SESSION:
     LOG_CLIENT = None
 else:
-    LOG_CLIENT = Client(LOG_SESSION, API_ID, API_HASH)
+    LOG_CLIENT = Client('LOG_SESSION', session_string=LOG_SESSION, api_id=API_ID, api_hash=API_HASH)

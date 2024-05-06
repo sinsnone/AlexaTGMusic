@@ -54,7 +54,7 @@ from Alexa.Utilities.func import mplay_stream, vplay_stream
 
 
 @app.on_message(
-    commandpro(["/p", "Play", "/play", "/play@{BOT_USERNAME}"]) & filters.group
+    commandpro(["/p", "Play", "/play", f"/play@{BOT_USERNAME}"])
 )
 @checker
 @logging
@@ -170,7 +170,7 @@ async def mplayaa(_, message: Message):
 
 
 @app.on_message(
-    commandpro(["/v", "/vplay", "vplay", "/vplay@{BOT_USERNAME}"]) & filters.group
+    commandpro(["/v", "/vplay", "vplay", f"/vplay@{BOT_USERNAME}"])
 )
 @checker
 @logging

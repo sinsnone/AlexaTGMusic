@@ -521,7 +521,7 @@ async def group_playlist(_, CallbackQuery):
         a = await app.get_chat_member(
             CallbackQuery.message.chat.id, CallbackQuery.from_user.id
         )
-        if not a.can_manage_voice_chats:
+        if not a.status.value in ("administrator", "owner"):
             return await CallbackQuery.answer(
                 "You don't have the required permission to perform this action.\nPermission: MANAGE VOICE CHATS",
                 show_alert=True,
@@ -625,7 +625,7 @@ async def del_playlist(_, CallbackQuery):
         a = await app.get_chat_member(
             CallbackQuery.message.chat.id, CallbackQuery.from_user.id
         )
-        if not a.can_manage_voice_chats:
+        if not a.status.value in ("administrator", "owner"):
             return await CallbackQuery.answer(
                 "You don't have the required permission to perform this action.\nPermission: MANAGE VOICE CHATS",
                 show_alert=True,
